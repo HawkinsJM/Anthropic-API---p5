@@ -17,31 +17,46 @@ Before you begin, make sure you have:
 
 ## 🚀 Quick Start
 
-### 1. Get an Anthropic API Key
+### 1. Clone or Download This Repository
+
+If you haven't already, clone or download this repository to your local machine:
+
+```bash
+git clone <repository-url>
+cd "Anthropic API + p5"
+```
+
+Or if you downloaded the ZIP file, extract it and navigate to the folder in your terminal.
+
+### 2. Get an Anthropic API Key
 
 1. Go to [https://console.anthropic.com/](https://console.anthropic.com/)
 2. Sign up or log in
 3. Navigate to **API Keys** section
 4. Click **Create Key** and copy your new API key
 
-### 2. Set Up the Project
+### 3. Install Dependencies
 
-**Open your terminal** and navigate to this project folder:
-
-```bash
-cd "Teaching LLMs/Claude API 1"
-```
-
-**Install dependencies:**
+Open your terminal in the project folder and run:
 
 ```bash
 npm install
 ```
 
-**Configure your API key:**
+This will install Express, CORS, and node-fetch packages needed for the server.
 
-1. Open the file `config.js`
-2. Replace `'your-api-key-here'` with your actual API key:
+### 4. Configure Your API Key
+
+**Create your config file:**
+
+1. Copy `config.example.js` to create your own `config.js`:
+
+```bash
+cp config.example.js config.js
+```
+
+2. Open `config.js` in your text editor
+3. Replace `'your-api-key-here'` with your actual API key:
 
 ```javascript
 const CONFIG = {
@@ -49,11 +64,11 @@ const CONFIG = {
 };
 ```
 
-3. Save the file
+4. Save the file
 
 > **⚠️ Important:** The `config.js` file is git-ignored for security. Never commit your API key to version control!
 
-### 3. Run the Application
+### 5. Run the Application
 
 **Start the server:**
 
@@ -79,15 +94,17 @@ That's it! You should see the chat interface. Type a message and press Enter or 
 ## 📁 Project Structure
 
 ```
-Claude API 1/
+Anthropic API + p5/
 ├── sketch.js          # Main p5.js code (chat interface)
 ├── server.js          # Node.js proxy server (handles API calls)
 ├── config.js          # Your API key (git-ignored)
 ├── config.example.js  # Example config file (safe to share)
 ├── index.html         # HTML page that loads everything
 ├── package.json       # Node.js dependencies
-├── .gitignore        # Prevents sensitive files from being committed
-└── README.md         # This file!
+├── .gitignore         # Prevents sensitive files from being committed
+├── libraries/         # p5.js library files (git-ignored)
+├── node_modules/      # npm dependencies (git-ignored)
+└── README.md          # This file!
 ```
 
 ## 🎓 How It Works
@@ -128,10 +145,16 @@ Then run `npm start` again.
 
 ### "API Key loaded: No"
 
-Check that:
-1. Your `config.js` file exists (copy from `config.example.js` if needed)
-2. Your API key is properly formatted with quotes
+You likely haven't created your `config.js` file yet. Check that:
+1. You copied `config.example.js` to create `config.js` (see step 4 above)
+2. Your API key is properly formatted with quotes in `config.js`
 3. The file is saved
+
+If `config.js` doesn't exist, run:
+```bash
+cp config.example.js config.js
+```
+Then edit `config.js` with your API key.
 
 ### "404 Not Found" or "Connection refused"
 
@@ -183,6 +206,7 @@ You should see the "Server running..." message.
 - **Never commit `config.js`** to git (it's already in `.gitignore`)
 - The `config.example.js` file is safe to share
 - Monitor your API usage at [console.anthropic.com](https://console.anthropic.com)
+- Files in `.gitignore`: `config.js`, `node_modules/`, `libraries/`, `.env`, and system files
 
 ## 📝 License
 
